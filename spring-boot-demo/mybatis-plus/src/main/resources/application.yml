@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+#  datasource:
+#    url: jdbc:mysql://bj-cdb-4d0x3ht2.sql.tencentcdb.com:62328/snow_db_dev
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: developer
+#    password: developer12321
+  profiles:
+    active: dev
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+
+generator:
+  module-name: advert
+  parent: com.atdyl.mybatisplus.generator
+  include: tbl_snow_m_goods_category,tbl_snow_m_goods_header
+  strip-prefix: tbl_snow_m_
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    dynamic:
+      druid: #以下是全局默认值，可以全局更改
+        initial-size: 0
+        max-active: 8
+        min-idle: 2
+        max-wait: -1
+        min-evictable-idle-time-millis: 30000
+        max-evictable-idle-time-millis: 30000
+        time-between-eviction-runs-millis: 0
+        validation-query: select 1
+        validation-query-timeout: -1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        pool-prepared-statements: true
+        filters: stat,wall
+        share-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 100
+      primary: snow #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        snow:
+          username: developer
+          password: developer12321
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://bj-cdb-4d0x3ht2.sql.tencentcdb.com:62328/snow_db_dev
+        varys:
+          username: developer
+          password: developer12321
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://bj-cdb-4d0x3ht2.sql.tencentcdb.com:62328/varys_db_dev?characterEncoding=UTF-8&useSSL=false
+

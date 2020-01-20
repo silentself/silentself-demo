@@ -1,0 +1,16 @@
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.115.142.164:8848
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://18.222.201.119:8000/eureka
+      defaultZone:  http://localhost:8080/eureka,http://18.222.201.119:8000/eureka
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

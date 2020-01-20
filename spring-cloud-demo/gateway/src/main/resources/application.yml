@@ -1,0 +1,37 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: route_ucenter
+          uri: lb://snow-ucenter
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: route_item
+          uri: lb://snow-item
+          predicates:
+            - Path=/item/**
+          filters:
+            - StripPrefix=1
+        - id: route_order
+          uri: lb://snow-order
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+        - id: route_admin
+          uri: lb://snow-admin
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=1
+  application:
+    name: snow-gateway
+

@@ -10,10 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-cloud-demo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>gateway</module>
+        <module>eureka</module>
+    </modules>
 
     <properties>
-        <spring.boot.version>2.0.6.RELEASE</spring.boot.version>
-        <spring-cloud.version>Finchley.SR4</spring-cloud.version>
+        <spring.boot.version>2.1.10.RELEASE</spring.boot.version>
+        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <dependencyManagement>
@@ -33,6 +39,22 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>

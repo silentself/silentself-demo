@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    #是否确认发送的消息已经被消费
+    publisher-confirms: true
+    virtual-host: my_vhost
+#rabbitmq的消息队列名称
+rabbitmq:
+  queue:
+    msg: spring-boot-queue-msg
+#rabbitmq的消息队列名称，由他发送用户对象
+    user: spring-boot-queue-user

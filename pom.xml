@@ -8,7 +8,6 @@
     <artifactId>silentself-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-boot-demo</module>
         <module>spring-cloud-demo</module>
         <module>common-server</module>
         <module>spring-demo</module>
